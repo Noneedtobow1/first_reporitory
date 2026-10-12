@@ -5,13 +5,12 @@
 #include <iomanip>
 using namespace std;
 
-// это лаба 2 по теме мапы и вектора
-// пишу этот коммент чтобы сделать изменения в ветке main
+// ГЅГІГ® Г«Г ГЎГ  2 ГЇГ® ГІГҐГ¬ГҐ Г¬Г ГЇГ» ГЁ ГўГҐГЄГІГ®Г°Г 
+// ГЇГЁГёГі ГЅГІГ®ГІ ГЄГ®Г¬Г¬ГҐГ­ГІ Г·ГІГ®ГЎГ» Г±Г¤ГҐГ«Г ГІГј ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГї Гў ГўГҐГІГЄГҐ main
 
-// добавляю коммент чтобы сделать слияние веток
+// Г¤Г®ГЎГ ГўГ«ГїГѕ ГЄГ®Г¬Г¬ГҐГ­ГІ Г·ГІГ®ГЎГ» Г±Г¤ГҐГ«Г ГІГј Г±Г«ГЁГїГ­ГЁГҐ ГўГҐГІГ®ГЄ
 
-// еще один комм в feature
-// добавляю строку для конфликта
+// merge conflict СЂРµС€С‘РЅ
 
 struct Student {
     int id;                
@@ -19,7 +18,7 @@ struct Student {
     vector<double> grades; 
 
     void display() const {
-        cout << "ID: " << id << " | Имя: " << name << " | Оценки: [ ";
+        cout << "ID: " << id << " | Г€Г¬Гї: " << name << " | ГЋГ¶ГҐГ­ГЄГЁ: [ ";
         for (double grade : grades) {
             cout << grade << " ";
         }
@@ -39,23 +38,23 @@ struct Student {
 
 void addStudent(vector<Student>& students, map<int, Student>& studentMap) {
     Student newStudent;
-    cout << "\nВведите ID студента: ";
+    cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ID Г±ГІГіГ¤ГҐГ­ГІГ : ";
     cin >> newStudent.id;
 
     if (studentMap.find(newStudent.id) != studentMap.end()) {
-        cout << "Ошибка: Студент с ID " << newStudent.id << " уже существует!\n";
+        cout << "ГЋГёГЁГЎГЄГ : Г‘ГІГіГ¤ГҐГ­ГІ Г± ID " << newStudent.id << " ГіГ¦ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ!\n";
         return;
     }
 
-    cout << "Введите имя студента: ";
+    cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЁГ¬Гї Г±ГІГіГ¤ГҐГ­ГІГ : ";
     cin.ignore();
     getline(cin, newStudent.name);
 
     int gradesCount;
-    cout << "Введите количество оценок: ";
+    cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г®Г¶ГҐГ­Г®ГЄ: ";
     cin >> gradesCount;
 
-    cout << "Введите оценки через пробел: ";
+    cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г®Г¶ГҐГ­ГЄГЁ Г·ГҐГ°ГҐГ§ ГЇГ°Г®ГЎГҐГ«: ";
     for (int i = 0; i < gradesCount; ++i) {
         double g;
         cin >> g;
@@ -65,16 +64,16 @@ void addStudent(vector<Student>& students, map<int, Student>& studentMap) {
     students.push_back(newStudent);
     studentMap[newStudent.id] = newStudent;
 
-    cout << "Студент успешно добавлен!\n";
+    cout << "Г‘ГІГіГ¤ГҐГ­ГІ ГіГ±ГЇГҐГёГ­Г® Г¤Г®ГЎГ ГўГ«ГҐГ­!\n";
 }
 
 void printAllStudents(const vector<Student>& students) {
     if (students.empty()) {
-        cout << "\nСписок студентов пуст.\n";
+        cout << "\nГ‘ГЇГЁГ±Г®ГЄ Г±ГІГіГ¤ГҐГ­ГІГ®Гў ГЇГіГ±ГІ.\n";
         return;
     }
 
-    cout << "\n--- Список всех студентов ---\n";
+    cout << "\n--- Г‘ГЇГЁГ±Г®ГЄ ГўГ±ГҐГµ Г±ГІГіГ¤ГҐГ­ГІГ®Гў ---\n";
     for (const auto& student : students) {
         student.display();
         cout << "\n";
@@ -83,27 +82,27 @@ void printAllStudents(const vector<Student>& students) {
 
 void calculateAverage(const map<int, Student>& studentMap) {
     int id;
-    cout << "\nВведите ID студента для расчета средней оценки: ";
+    cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ID Г±ГІГіГ¤ГҐГ­ГІГ  Г¤Г«Гї Г°Г Г±Г·ГҐГІГ  Г±Г°ГҐГ¤Г­ГҐГ© Г®Г¶ГҐГ­ГЄГЁ: ";
     cin >> id;
 
     auto it = studentMap.find(id);
     if (it != studentMap.end()) {
         double avg = it->second.getAverageGrade();
-        cout << "Студент: " << it->second.name
-            << " | Средняя оценка: " << fixed << setprecision(2) << avg << "\n";
+        cout << "Г‘ГІГіГ¤ГҐГ­ГІ: " << it->second.name
+            << " | Г‘Г°ГҐГ¤Г­ГїГї Г®Г¶ГҐГ­ГЄГ : " << fixed << setprecision(2) << avg << "\n";
     }
     else {
-        cout << "Студент с ID " << id << " не найден.\n";
+        cout << "Г‘ГІГіГ¤ГҐГ­ГІ Г± ID " << id << " Г­ГҐ Г­Г Г©Г¤ГҐГ­.\n";
     }
 }
 
 void searchByGrade(const vector<Student>& students) {
     double targetGrade;
-    cout << "\nВведите искомую оценку: ";
+    cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ГЁГ±ГЄГ®Г¬ГіГѕ Г®Г¶ГҐГ­ГЄГі: ";
     cin >> targetGrade;
 
     bool found = false;
-    cout << "\n--- Студенты с оценкой " << targetGrade << " ---\n";
+    cout << "\n--- Г‘ГІГіГ¤ГҐГ­ГІГ» Г± Г®Г¶ГҐГ­ГЄГ®Г© " << targetGrade << " ---\n";
     for (const auto& student : students) {
         bool hasGrade = false;
 
@@ -122,35 +121,35 @@ void searchByGrade(const vector<Student>& students) {
     }
 
     if (!found) {
-        cout << "Студенты с такой оценкой не найдены.\n";
+        cout << "Г‘ГІГіГ¤ГҐГ­ГІГ» Г± ГІГ ГЄГ®Г© Г®Г¶ГҐГ­ГЄГ®Г© Г­ГҐ Г­Г Г©Г¤ГҐГ­Г».\n";
     }
 }
 
 void searchById(const map<int, Student>& studentMap) {
     int id;
-    cout << "\nВведите ID студента для поиска: ";
+    cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ID Г±ГІГіГ¤ГҐГ­ГІГ  Г¤Г«Гї ГЇГ®ГЁГ±ГЄГ : ";
     cin >> id;
 
     auto it = studentMap.find(id);
     if (it != studentMap.end()) {
-        cout << "Студент найден: ";
+        cout << "Г‘ГІГіГ¤ГҐГ­ГІ Г­Г Г©Г¤ГҐГ­: ";
         it->second.display();
         cout << "\n";
     }
     else {
-        cout << "Студент с ID " << id << " не найден.\n";
+        cout << "Г‘ГІГіГ¤ГҐГ­ГІ Г± ID " << id << " Г­ГҐ Г­Г Г©Г¤ГҐГ­.\n";
     }
 }
 
 void addGradeToStudent(vector<Student>& students, map<int, Student>& studentMap) {
     int id;
-    cout << "\nВведите ID студента для добавления оценки: ";
+    cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ID Г±ГІГіГ¤ГҐГ­ГІГ  Г¤Г«Гї Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГї Г®Г¶ГҐГ­ГЄГЁ: ";
     cin >> id;
 
     auto it = studentMap.find(id);
     if (it != studentMap.end()) {
         double newGrade;
-        cout << "Введите новую оценку: ";
+        cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г®ГўГіГѕ Г®Г¶ГҐГ­ГЄГі: ";
         cin >> newGrade;
 
         it->second.grades.push_back(newGrade);
@@ -161,10 +160,10 @@ void addGradeToStudent(vector<Student>& students, map<int, Student>& studentMap)
                 break;
             }
         }
-        cout << "Оценка успешно добавлена!\n";
+        cout << "ГЋГ¶ГҐГ­ГЄГ  ГіГ±ГЇГҐГёГ­Г® Г¤Г®ГЎГ ГўГ«ГҐГ­Г !\n";
     }
     else {
-        cout << "Студент с ID " << id << " не найден.\n";
+        cout << "Г‘ГІГіГ¤ГҐГ­ГІ Г± ID " << id << " Г­ГҐ Г­Г Г©Г¤ГҐГ­.\n";
     }
 }
 
@@ -173,8 +172,8 @@ int main() {
     vector<Student> students;
     map<int, Student> studentMap;
 
-    Student s1 = { 1, "Просто Парень", {8.5, 9.0, 7.5} };
-    Student s2 = { 2, "Чисто Вася", {10.0, 9.5, 10.0} };
+    Student s1 = { 1, "ГЏГ°Г®Г±ГІГ® ГЏГ Г°ГҐГ­Гј", {8.5, 9.0, 7.5} };
+    Student s2 = { 2, "Г—ГЁГ±ГІГ® Г‚Г Г±Гї", {10.0, 9.5, 10.0} };
 
     students.push_back(s1);
     students.push_back(s2);
@@ -184,15 +183,15 @@ int main() {
 
     int choice;
     do {
-        cout << "МЕНЮ*****\n"
-            << "1. Добавить студента\n"
-            << "2. Просмотреть всех студентов\n"
-            << "3. Рассчитать средний балл студента по ID\n"
-            << "4. Найти студентов по конкретной оценке\n"
-            << "5. Найти студента по ID\n"
-            << "6. Добавить новую оценку студенту\n"
-            << "0. Выйти из программы\n"
-            << "Выберите действие: ";
+        cout << "ГЊГ…ГЌГћ*****\n"
+            << "1. Г„Г®ГЎГ ГўГЁГІГј Г±ГІГіГ¤ГҐГ­ГІГ \n"
+            << "2. ГЏГ°Г®Г±Г¬Г®ГІГ°ГҐГІГј ГўГ±ГҐГµ Г±ГІГіГ¤ГҐГ­ГІГ®Гў\n"
+            << "3. ГђГ Г±Г±Г·ГЁГІГ ГІГј Г±Г°ГҐГ¤Г­ГЁГ© ГЎГ Г«Г« Г±ГІГіГ¤ГҐГ­ГІГ  ГЇГ® ID\n"
+            << "4. ГЌГ Г©ГІГЁ Г±ГІГіГ¤ГҐГ­ГІГ®Гў ГЇГ® ГЄГ®Г­ГЄГ°ГҐГІГ­Г®Г© Г®Г¶ГҐГ­ГЄГҐ\n"
+            << "5. ГЌГ Г©ГІГЁ Г±ГІГіГ¤ГҐГ­ГІГ  ГЇГ® ID\n"
+            << "6. Г„Г®ГЎГ ГўГЁГІГј Г­Г®ГўГіГѕ Г®Г¶ГҐГ­ГЄГі Г±ГІГіГ¤ГҐГ­ГІГі\n"
+            << "0. Г‚Г»Г©ГІГЁ ГЁГ§ ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»\n"
+            << "Г‚Г»ГЎГҐГ°ГЁГІГҐ Г¤ГҐГ©Г±ГІГўГЁГҐ: ";
         cin >> choice;
 
         switch (choice) {
@@ -217,7 +216,7 @@ int main() {
         case 0:
             break;
         default:
-            cout << "Неверный выбор. Попробуйте снова.\n";
+            cout << "ГЌГҐГўГҐГ°Г­Г»Г© ГўГ»ГЎГ®Г°. ГЏГ®ГЇГ°Г®ГЎГіГ©ГІГҐ Г±Г­Г®ГўГ .\n";
         }
     } while (choice != 0);
 
