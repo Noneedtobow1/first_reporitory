@@ -5,6 +5,9 @@
 #include <iomanip>
 using namespace std;
 
+// это лаба 2 по теме мапы и вектора
+// пишу этот коммент чтобы сделать изменения в ветке main
+
 struct Student {
     int id;                
     string name;           
