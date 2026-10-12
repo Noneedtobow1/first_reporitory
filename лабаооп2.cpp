@@ -10,6 +10,8 @@ using namespace std;
 
 // добавл€ю коммент чтобы сделать сли€ние веток
 
+// коммент дл€ конфликта с feature
+
 struct Student {
     int id;                
     string name;           
